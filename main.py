@@ -12,7 +12,7 @@ import os
 
 import pandas as pd
 
-import scrapping_commnets
+import scrapping_comments
 from securityFolder.constant import STUDENT_NUMBER_PATH
 
 
@@ -38,4 +38,4 @@ pay_student_name = csv_data["name"].to_list()  # 이름 데이터  dict -> list
 pay_student_num = csv_data["number"].to_list()  # 학번 데이터 dict - list
 
 # 인스타그램 댓글 스크래핑 시작
-scrapping_commnets.start_int()
+scrapping_comments.start_int(pay_student_name, pay_student_num)

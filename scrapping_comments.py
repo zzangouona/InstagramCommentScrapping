@@ -1,4 +1,5 @@
 # coding=utf-8
+from selenium import webdriver
 """
     Created by JungYunAh Hello!
     ProjectName : InstagramCommentScrapping
@@ -9,5 +10,7 @@
 """
 
 
-def start_int():
+def start_int(pay_student_name, pay_student_num):
     print("scrapping_comment")
+    driver = webdriver.Chrome()
+    driver.get("https://github.com/zzanguna")
