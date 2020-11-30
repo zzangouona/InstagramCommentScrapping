@@ -91,7 +91,7 @@ def scrapping_inst_comment(driver):
         userid = container.find_element_by_class_name('_6lAjh').text
         # 인스타 댓글
         content = el.find_element_by_css_selector('.C4VMK > span').text
-        content = content.replace('\n', ' ').strip().rstrip().encode('utf-8')
+        content = content.replace('\n', ' ').strip().rstrip()
         scrapping_data.append([content, userid])
     return scrapping_data
 
