@@ -16,7 +16,7 @@ from securityFolder.src.constant import INST_LOGIN_ADDRESS, INSTA_ID, INSTA_PW, 
 
 
 # todo 2020.11.30 인스타그램 스크래핑 시작
-def start_int(pay_student_name, pay_student_num):
+def start_int():
     print("def start_int")
     driver = webdriver.Chrome()
     # 인스타그램 로그인
