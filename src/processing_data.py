@@ -55,7 +55,6 @@ def getting_data(scrapping_data, pay_student_name, pay_student_num):
     comment_count = 0  # 총 댓글 수 카운팅
     for cdata in scrapping_data:
         comment = cdata[0]  # 댓글
-        print(comment)
         # todo 2020.12.01 댓글에서 학번데이터만 추출
         num_pattern = re.compile(r"\d{8}")  # 댓글에서 학번 데이터을 추출 할 정규식
         get_stu_num = re.findall(num_pattern, comment.replace("-", ""))  # 학번 추출
