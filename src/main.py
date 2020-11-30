@@ -33,7 +33,6 @@ def get_csv_file():
 
 
 print("main.py")
-
 # csv 데이터 가져오기
 csv_data = get_csv_file()
 pay_student_name = csv_data["name"].to_list()  # 이름 데이터  dict -> list
