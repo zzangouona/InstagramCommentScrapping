@@ -3,8 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-from securityFolder.src.constant import INST_LOGIN_ADDRESS, INSTA_ID, INSTA_PW, INST_ADDRESS
-from src import processing_data
+from securityFolder.src.constant import INST_LOGIN_ADDRESS, INSTA_ID, INSTA_PW, INST_ADDRESS, PAGING_COUNT
 
 """
     Created by JungYunAh Hello!
@@ -18,17 +17,6 @@ from src import processing_data
 
 # todo 2020.11.30 인스타그램 스크래핑 시작
 def start_int(pay_student_name, pay_student_num):
-    print("scrapping_comments.py")
-    """
-        인스타그램 로그안 함수 호출
-        인스타그램 스크래핑 함수 호출 후 데이터를 받음
-        processing_data.start_init 함수 호출
-    :param pay_student_name: 학생 이름
-    :type pay_student_name: list(string) 
-    :param pay_student_num: 학번
-    :type pay_student_num: list(string)
-    :return noting:  
-    """
     print("def start_int")
     driver = webdriver.Chrome()
     # 인스타그램 로그인
@@ -36,7 +24,7 @@ def start_int(pay_student_name, pay_student_num):
 
     # 인스타댓글 크롤링해서 가져온다.
     scrapping_data = scrapping_inst_comment(driver)
-    processing_data.start_init(scrapping_data, pay_student_name, pay_student_num)
+    print(len(scrapping_data))
 
 
 # todo 2020.11.30 인스타그램 로그인 크롤링 함수 구현
@@ -108,3 +96,4 @@ def scrapping_inst_comment(driver):
     return scrapping_data
 
 
+# todo 2020.11.30 인스타그램 댓글 중 csv 안에 있는 정보에 있는 데이터만 가져오기
