@@ -16,7 +16,7 @@ def start_init(scrapping_data, pay_student_name, pay_student_num):
     """
         이벤트 대상자 데이터 반환 하기 위해 getting_data 호출 후 데이터 저장
         이벤트 대상자 데이터를 엑셀로 내보내기 위해 excel_export.start_init 호출
-        
+
     :param scrapping_data: 스크래핑해서 가져온 데이터 댓글, 아이디
     :type scrapping_data: list
     :param pay_student_name: 학생이름
@@ -28,8 +28,6 @@ def start_init(scrapping_data, pay_student_name, pay_student_num):
 
     event_targets_data = getting_data(scrapping_data, pay_student_name, pay_student_num)
     excel_export.start_init(event_targets_data)
-
-
 
 
 def getting_data(scrapping_data, pay_student_name, pay_student_num):
