@@ -15,6 +15,7 @@ from securityFolder.src.constant import INST_LOGIN_ADDRESS, INSTA_ID, INSTA_PW, 
 """
 
 
+# todo 2020.11.30 인스타그램 스크래핑 시작
 def start_int(pay_student_name, pay_student_num):
     print("def start_int")
     driver = webdriver.Chrome()
@@ -26,7 +27,7 @@ def start_int(pay_student_name, pay_student_num):
     print(len(scrapping_data))
 
 
-
+# todo 2020.11.30 인스타그램 로그인 크롤링 함수 구현
 def instagram_signup(driver):
     print("def instagram_signup")
     """
@@ -56,6 +57,7 @@ def instagram_signup(driver):
     time.sleep(1.5)
 
 
+# todo 2020.11.30 인스타그램 댓글, 유저 아이디 정보 스크래핑 함수 구현
 def scrapping_inst_comment(driver):
     print("def scrapping_inst_comment")
     """
@@ -71,17 +73,15 @@ def scrapping_inst_comment(driver):
     time.sleep(3)
 
     # 댓글 더보기 버튼 클릭
-    try:
-        load_more_comment = driver.find_element_by_css_selector('.MGdpg > button:nth-child(1)')
-        i = 0
-        while load_more_comment.is_displayed() and i < int(PAGING_COUNT):
-            load_more_comment.click()
-            time.sleep(3)
-            load_more_comment = driver.find_element_by_css_selector('.MGdpg > button:nth-child(1)')
-            i += 1
-    except Exception as e:  # 예외가 발생했을 때
-        print(e)
-        pass
+    # todo 2020.11.30 댓글 더보기 기능 코드 정리
+    # 조건 : 더보기 버튼이 있을 경우(클래스로 판단) selenium.send_keys를 사용해서 자동 클릭
+    while True:
+        try:
+            driver.find_element_by_class_name('afkep').send_keys(Keys.RETURN)
+            time.sleep(1.5)
+        except Exception as e:
+            print(e)
+            break
 
     scrapping_data = []  # 인스타 아이디, 인스타 댓글 보내짐
     comment_element = driver.find_elements_by_class_name('gElp9 ')  # 댓글 element
@@ -96,3 +96,4 @@ def scrapping_inst_comment(driver):
     return scrapping_data
 
 
+# todo 2020.11.30 인스타그램 댓글 중 csv 안에 있는 정보에 있는 데이터만 가져오기
