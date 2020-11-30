@@ -12,8 +12,8 @@ import os
 
 import pandas as pd
 
-import scrapping_comments
-from securityFolder.constant import STUDENT_NUMBER_PATH
+import src.scrapping_comments
+from securityFolder.src.constant import STUDENT_NUMBER_PATH
 
 
 def get_csv_file():
@@ -32,10 +32,12 @@ def get_csv_file():
         return get_csv
 
 
+print("main.py")
+
 # csv 데이터 가져오기
 csv_data = get_csv_file()
 pay_student_name = csv_data["name"].to_list()  # 이름 데이터  dict -> list
 pay_student_num = csv_data["number"].to_list()  # 학번 데이터 dict - list
 
 # 인스타그램 댓글 스크래핑 시작
-scrapping_comments.start_int(pay_student_name, pay_student_num)
+src.scrapping_comments.start_int(pay_student_name, pay_student_num)
