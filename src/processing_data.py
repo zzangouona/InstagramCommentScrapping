@@ -8,20 +8,34 @@
     Description :
 """
 import re
+from src import excel_export
 
 
 def start_init(scrapping_data, pay_student_name, pay_student_num):
     print("processing_data.py")
-    event_targets_data = getting_data(scrapping_data, pay_student_name, pay_student_num)
+    """
+        이벤트 대상자 데이터 반환 하기 위해 getting_data 호출 후 데이터 저장
+        이벤트 대상자 데이터를 엑셀로 내보내기 위해 excel_export.start_init 호출
+        
+    :param scrapping_data: 스크래핑해서 가져온 데이터 댓글, 아이디
+    :type scrapping_data: list
+    :param pay_student_name: 학생이름
+    :type pay_student_name: list(string)
+    :param pay_student_num: 학번
+    :type pay_student_num: list(string)
+    :return noting: 
+    """
 
-    # todo 이벤트 대상자의 데이터를 엑셀로 내보낸다.
+    event_targets_data = getting_data(scrapping_data, pay_student_name, pay_student_num)
+    excel_export.start_init(event_targets_data)
+
 
 
 
 def getting_data(scrapping_data, pay_student_name, pay_student_num):
     """
         이벤트 대상자의 댓글들과 그 다른 정보들을 반환하는 함수이다.
-        스크래핑한 데이터에서 csv 안에 학생들의 댓글만 찾아내 번호, 학번, 이름, 인스타아이디, 댓글 list 를 반환한다.
+        스크래핑한 데이터에서 csv 파일 안에 학번과 동일한 댓글이 있을 경우 list에 해당 댓글 순서, 학생의 이름, 학번, 인스타 아이디, 댓글이 추가하여 데이터를 반환한다.
     :param scrapping_data: 스크래핑해서 가져온 데이터 댓글, 아이디
     :type scrapping_data: list
     :param pay_student_name: 학생이름

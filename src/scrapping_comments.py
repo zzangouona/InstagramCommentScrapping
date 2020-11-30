@@ -20,7 +20,7 @@ from src import processing_data
 def start_int(pay_student_name, pay_student_num):
     print("scrapping_comments.py")
     """
-        인스타그램 로그임 함수 호출
+        인스타그램 로그안 함수 호출
         인스타그램 스크래핑 함수 호출 후 데이터를 받음
         processing_data.start_init 함수 호출
     :param pay_student_name: 학생 이름
