@@ -13,6 +13,7 @@ import os
 import pandas as pd
 
 from securityFolder.src.constant import STUDENT_NUMBER_PATH
+from src import scrapping_comments
 
 
 def get_csv_file():
