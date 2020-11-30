@@ -38,6 +38,7 @@ def start_int(pay_student_name, pay_student_num):
     scrapping_data = scrapping_inst_comment(driver)
     processing_data.start_init(scrapping_data, pay_student_name, pay_student_num)
 
+
 # todo 2020.11.30 인스타그램 로그인 크롤링 함수 구현
 def instagram_signup(driver):
     print("def instagram_signup")
