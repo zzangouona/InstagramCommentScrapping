@@ -74,17 +74,14 @@ def scrapping_inst_comment(driver):
 
     # 댓글 더보기 버튼 클릭
     # todo 2020.11.30 댓글 더보기 기능 코드 정리
-    try:
-        load_more_comment = driver.find_element_by_css_selector('.MGdpg > button:nth-child(1)')
-        i = 0
-        while load_more_comment.is_displayed() and i < int(PAGING_COUNT):
-            load_more_comment.click()
-            time.sleep(3)
-            load_more_comment = driver.find_element_by_css_selector('.MGdpg > button:nth-child(1)')
-            i += 1
-    except Exception as e:  # 예외가 발생했
-        print(e)
-        pass
+    # 조건 : 더보기 버튼이 있을 경우(클래스로 판단) selenium.send_keys를 사용해서 자동 클릭
+    while True:
+        try:
+            driver.find_element_by_class_name('afkep').send_keys(Keys.RETURN)
+            time.sleep(1.5)
+        except Exception as e:
+            print(e)
+            break
 
     scrapping_data = []  # 인스타 아이디, 인스타 댓글 보내짐
     comment_element = driver.find_elements_by_class_name('gElp9 ')  # 댓글 element
