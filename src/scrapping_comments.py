@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 from securityFolder.src.constant import INST_LOGIN_ADDRESS, INSTA_ID, INSTA_PW, INST_ADDRESS, PAGING_COUNT
+from src import processing_data
 
 """
     Created by JungYunAh Hello!
@@ -16,7 +17,7 @@ from securityFolder.src.constant import INST_LOGIN_ADDRESS, INSTA_ID, INSTA_PW, 
 
 
 # todo 2020.11.30 인스타그램 스크래핑 시작
-def start_int():
+def start_int(pay_student_name, pay_student_num):
     print("def start_int")
     driver = webdriver.Chrome()
     # 인스타그램 로그인
@@ -24,7 +25,8 @@ def start_int():
 
     # 인스타댓글 크롤링해서 가져온다.
     scrapping_data = scrapping_inst_comment(driver)
-    print(len(scrapping_data))
+    # 스크래핑한 데이터 처리
+    processing_data.start_init(scrapping_data, pay_student_name, pay_student_num)
 
 
 # todo 2020.11.30 인스타그램 로그인 크롤링 함수 구현
@@ -96,4 +98,4 @@ def scrapping_inst_comment(driver):
     return scrapping_data
 
 
-# todo 2020.11.30 인스타그램 댓글 중 csv 안에 있는 정보에 있는 데이터만 가져오기
+

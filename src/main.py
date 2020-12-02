@@ -12,11 +12,12 @@ import os
 
 import pandas as pd
 
-import src.scrapping_comments
+
 from securityFolder.src.constant import STUDENT_NUMBER_PATH
 from src import scrapping_comments
 
 
+# todo 2020.11.30 인스타그램 댓글 중 csv 안에 있는 정보에 있는 데이터만 가져오기
 def get_csv_file():
     """
     csv를 찾아서 데이터를 불러오는 함
@@ -40,4 +41,4 @@ pay_student_name = csv_data["name"].to_list()  # 이름 데이터  dict -> list
 pay_student_num = csv_data["number"].to_list()  # 학번 데이터 dict - list
 
 # 인스타그램 댓글 스크래핑 시작
-src.scrapping_comments.start_int(pay_student_name, pay_student_num)
+scrapping_comments.start_int(pay_student_name, pay_student_num)

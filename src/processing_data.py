@@ -60,15 +60,16 @@ def getting_data(scrapping_data, pay_student_name, pay_student_num):
         # todo 2020.12.01 csv 데이터 안에 있는 학번인지 check
         if not get_stu_num:  # get_stu_num == null
             continue
+        # todo index(string) 를 사용해서 코드 개선
         stu_num = get_stu_num[0]  # 코드 가독성을 위해 변수에 저장
         check_student_num = stu_num in pay_student_num  # csv 데이터 학생 데이터에 있는 학번인지 check
         if not check_student_num:
             continue
+        # 댓글에 나와있는 학번보다 정확한 csv 데이터를 넣기위해 index 값을 가져온다.
+        stu_inx = pay_student_num.index(stu_num)
 
         # 위에 조건이 모두 true 일때 list에 데이터를 추가한다
         userid = cdata[1]
-        # 댓글에 나와있는 학번보다 정확한 csv 데이터를 넣기위해 index 값을 가져온다.
-        stu_inx = pay_student_num.index(stu_num)
         comment_count += 1
         all_data.append([str(comment_count), pay_student_num[stu_inx], pay_student_name[stu_inx], userid, comment])
 
