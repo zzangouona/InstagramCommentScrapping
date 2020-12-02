@@ -8,6 +8,8 @@
     Description :
 """
 import re
+from collections import Counter
+
 import numpy as np
 
 from securityFolder.src.constant import COMMENT_HEADER
@@ -28,12 +30,16 @@ def start_init(scrapping_data, pay_student_name, pay_student_num):
     :type pay_student_num: list(string)
     :return noting: 
     """
-
+    # 이벤트 대상자 선별
     event_targets_data = getting_data(scrapping_data, pay_student_name, pay_student_num)
+    # 이벤트 대상자 중 댓글 최빈 학생 선별기(랭킹)
+    event_number_data = get_list_index(event_targets_data, 1)
+    event_targets_mode = getting_mode_data(event_number_data, 3, pay_student_name, pay_student_num)
+    print(event_targets_mode)
 
     # 엑셀 내보내기 전 헤더 값 추가하기
-    event_targets_data.insert(0, COMMENT_HEADER)
-    excel_export.start_init(event_targets_data, "event_comments.xlsx")
+    # event_targets_data.insert(0, COMMENT_HEADER)
+    # excel_export.start_init(event_targets_data, "event_comments.xlsx")
 
 
 def getting_data(scrapping_data, pay_student_name, pay_student_num):
@@ -76,5 +82,19 @@ def getting_data(scrapping_data, pay_student_name, pay_student_num):
     return all_data
 
 
+# todo 2D 데이터 n 번째 인덱스 값만 return 함수
+# 2D 데이터 인수 안에서 index 인수 데이터 return
+def get_list_index(get_data, num):
+    temp_np = np.array(get_data)
+    return temp_np[:, num]
 
+
+# todo 댓글 중 최빈값 랭킹 순로 가져오기
+def getting_mode_data(max_list, rank_num, pay_student_name, pay_student_num):
+    get_mode = Counter(max_list).most_common(rank_num)
+    mode_data = []
+    for i, m_data in enumerate(get_mode):
+        m_inx = pay_student_num.index(m_data[0])
+        mode_data.append([i, pay_student_name[m_inx], pay_student_num[m_inx], m_data[1]])
+    return mode_data
 
